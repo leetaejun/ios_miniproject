@@ -1,0 +1,74 @@
+<html>
+<head>
+	<script type="text/javascript">
+		
+		function clear() {
+			var titleText = document.getElementById("title_text");
+			var contentsText = document.getElementById('contents_text');
+			var imageUrlText = document.getElementById('image_url_text');
+			
+			titleText.value = "";
+			contentsText.value = "";
+			imageUrlText.value = "";
+		}
+		
+		function save() {
+			var titleText = document.getElementById('title_text');
+			var contentsText = document.getElementById('contents_text');
+			var imageUrlText = document.getElementById('image_url_text');
+		
+			var titleValue = encodeURIComponent(titleText.value);
+			var contentsValue = encodeURIComponent(contentsText.value);
+			var imageUrlValue = encodeURIComponent(imageUrlText.value);
+			
+			imageUrlText.value = imageUrlValue;
+			
+			document.location.href = "giosis://save?title=" + titleValue + "&contents=" + contentsValue + "&url=" + imageUrlValue;
+		}
+		
+		function list() {
+			document.location.href = "giosis://goList";
+		}
+		
+		window.onload = function() {
+			var clearButton = document.getElementById("clear_button");
+			clearButton.onclick = function() {
+				clear();
+			}
+			
+			var saveButton = document.getElementById("save_button");
+			saveButton.onclick = function() {
+				save();
+			}
+			
+			var listButton = document.getElementById("list_button");
+			listButton.onclick = function() {
+				list();
+			}
+		}
+		
+	</script>
+</head>
+<body>
+
+<p>
+Title : <input id="title_text" type="text" style="width:400;height:20" />
+</p>
+<p>
+Contents : <input id="contents_text" type="text" style="width:400;height:20" />
+</p>
+<p>
+Image URL : <input id="image_url_text" type="text" style="width:400;height:20" />
+</p>
+<p>
+<input id="clear_button" type="button" style="width:400;font-size:18pt" value="CLEAR ME!"/>
+</p>
+<p>
+<input id="save_button" type="button" style="width:400;font-size:18pt" value="SAVE ME!" />
+</p>
+<p>
+<input id="list_button" type="button" style="width:400;font-size:18pt" value="Go~! List!" />
+</p>
+
+<body>
+</html>
